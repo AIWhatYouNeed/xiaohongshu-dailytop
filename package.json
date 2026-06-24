@@ -1,0 +1,33 @@
+{
+  "name": "xiaohongshu-dailytop-skill",
+  "version": "1.0.0",
+  "description": "小红书每日热门数据抓取 Skill，支持多数据源自动回退（RedFox API / 自定义 API / Playwright 本地抓取）",
+  "main": "scraper.mjs",
+  "type": "module",
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "scripts": {
+    "start": "node scraper.mjs",
+    "setup": "npm install && npx playwright install chromium",
+    "test": "node scraper.mjs --limit 5"
+  },
+  "dependencies": {
+    "playwright": "^1.40.0"
+  },
+  "keywords": [
+    "xiaohongshu",
+    "redbook",
+    "scraping",
+    "daily-hot",
+    "agent-skill",
+    "lingma",
+    "claude-code"
+  ],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/your-username/xiaohongshu-dailytop.git"
+  }
+}
