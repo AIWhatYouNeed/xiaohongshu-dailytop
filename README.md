@@ -12,17 +12,47 @@
 
 ## 快速开始
 
-### 方式一：作为 AI Agent Skill 使用
+### 方式一：对话安装（推荐，零配置）
 
-将本目录放入你的 AI Agent Skills 目录（如 `.lingma/skills/`），然后直接对 AI 说：
+直接在 AI 对话中说：
+
+```
+安装小红书每日热门 Skill
+```
+
+或：
+
+```
+添加 Skill https://github.com/AIWhatYouNeed/xiaohongshu-dailytop
+```
+
+AI 会自动完成：
+1. 克隆仓库到 `.lingma/skills/xiaohongshu-dailytop/`
+2. 检测运行时环境（Node.js / Python）
+3. 自动安装缺失的依赖（Playwright + Chromium）
+4. 完成后直接说 **"看一下今天小红书热门"** 即可使用
+
+> **无需手动下载、无需配环境变量、无需写代码。**
+
+### 方式二：手动安装
+
+将本仓库克隆到你的 AI Agent Skills 目录：
+
+```bash
+# Lingma / Claude Code 等 Agent 环境
+git clone https://github.com/AIWhatYouNeed/xiaohongshu-dailytop.git .lingma/skills/xiaohongshu-dailytop
+
+# 或 Codex 环境
+git clone https://github.com/AIWhatYouNeed/xiaohongshu-dailytop.git .codex/skills/xiaohongshu-dailytop
+```
+
+安装完成后，直接对 AI 说：
 
 ```
 看一下今天小红书热门
 ```
 
-AI 会自动检测环境、安装依赖、抓取数据并输出结果。
-
-### 方式二：命令行直接运行
+### 方式三：命令行直接运行
 
 ```bash
 # Node.js 环境（推荐）
@@ -35,14 +65,31 @@ playwright install chromium
 python scraper.py --limit 10
 ```
 
-### 方式三：使用 RedFox API（最稳定）
+### 方式四：使用 RedFox API（最稳定）
+
+如果你需要更稳定、更快速的数据获取，可配置 RedFox API：
+
+**1. 获取 API Key**
+
+前往 [红狐 Hub - API 密钥管理](https://redfox.hk/settings/api-keys?source=github) 注册并创建 API Key。
+
+**2. 配置环境变量**
 
 ```bash
+# macOS / Linux
 export REDFOX_API_KEY="sk_xxxx"
+
+# Windows PowerShell
+$env:REDFOX_API_KEY="sk_xxxx"
+```
+
+**3. 运行**
+
+```bash
 node scraper.mjs --provider redfox --limit 20
 ```
 
-### 方式四：使用自定义 API
+### 方式五：使用自定义 API
 
 ```bash
 export CUSTOM_API_URL="https://your-api.com/xhs/hot"
